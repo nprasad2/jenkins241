@@ -5,7 +5,7 @@ echo " Installing the jenkins on master sever"
 # checking the the login is in su mode or not 
 USERID=$(id -u)
 
-if [$USERID -eq 0 ]
+if [ $USERID -eq 0 ]
 then 
     echo "you are in su mode ,Please rn the script"
 else 
