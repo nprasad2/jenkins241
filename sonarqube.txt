@@ -1,0 +1,7 @@
+search with "SonarQube CE on AWS"
+
+Here inital password is instance ID "i-022f7e9742205dacd"
+
+once sonar scanner server is installed ,then we need to enble the plugin in our jenkins agent 
+
+https://github.com/DevopsWorking/addressbook.git 

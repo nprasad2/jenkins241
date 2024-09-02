@@ -34,10 +34,10 @@ sudo yum upgrade -y
 validate $? " installing the deppendencies"
 # Add required dependencies for the jenkins package
 
-sudo yum install fontconfig java-17-openjdk
+sudo yum install fontconfig java-17-openjdk -y
 validate $? " installing the java dependencies"
 
-sudo yum install jenkins
+sudo yum install jenkins -y
 validate $? " installing the jenkins "
 
 sudo systemctl daemon-reload
@@ -51,3 +51,4 @@ validate $? "starting jenkins service"
 
 sudo systemctl status jenkins
 validate $? "checking the jenkins service status"
+
