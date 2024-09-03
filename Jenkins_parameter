@@ -31,7 +31,7 @@ pipeline{
                 sh 'mvn test'
             }
         }
-        stage('test the build '){
+        stage('War file of  the build '){
             steps{
 
                 sh 'mvn package'
