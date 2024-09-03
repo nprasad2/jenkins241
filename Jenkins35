@@ -1,0 +1,50 @@
+pipeline{
+    agent any
+    options{
+        buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '30', numToKeepStr: '2')
+    }
+    tools{
+        maven 'Maven' 
+    }
+    environment {
+        Name = "Hari"
+    }
+    stages{
+        stage('check out stage '){
+            steps{
+
+                checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/DevopsWorking/addressbook.git']])
+            }
+            
+        }
+        stage('code testing '){
+            steps{
+
+                sh 'mvn test'
+            }
+            
+        }
+        stage('build package '){
+            steps{
+
+                sh 'mvn package'
+            }
+            
+        }
+                stage('Build compile '){
+            steps{
+
+                sh 'mvn compile'
+                echo "the name is ${Name}"
+            }
+            
+        }
+    }
+
+
+}
+
+
+environment {
+  Name = "Hari"
+}
