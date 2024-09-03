@@ -10,7 +10,7 @@ pipeline{
         Name = "Hari"
     }
     parameters {
-        string defaultValue: 'DevOps', name: 'course'
+        string(name: 'Course', defaultValue: '', description: 'input tag for ansible command.')
     }
     stages{
         stage('checkout to the git'){
