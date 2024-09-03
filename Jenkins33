@@ -1,0 +1,18 @@
+pipeline{
+  agent any 
+  stages{
+    stage('clone the build'){
+      steps{
+        script{
+          checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/DevopsWorking/addressbook.git']])
+        }
+      }
+    }
+    stage('contents'){
+      steps{
+        sh 'ls'
+      }
+    }
+  
+  }
+}
