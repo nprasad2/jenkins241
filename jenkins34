@@ -1,0 +1,28 @@
+pipeline{
+    agent any 
+    options{
+        buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '30', numToKeepStr: '2')
+    }
+    tools {
+        maven 'Maven'
+    }
+    stages{
+        stage('clone the code'){
+            steps{
+
+                checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/DevopsWorking/addressbook.git']])
+            }
+        }
+        stage('build the code '){
+            steps{
+
+                sh 'maven compile'
+            }
+        }
+
+    }
+
+
+
+
+}
