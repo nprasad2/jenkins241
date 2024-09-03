@@ -1,18 +1,24 @@
 pipeline{
-  agent any 
-  stages{
-    stage('clone the build'){
-      steps{
-        script{
-          checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/DevopsWorking/addressbook.git']])
+    agent any
+    options {
+        buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '30', numToKeepStr: '2')
+    }
+    stages{
+        stage('build stage'){
+            steps{
+                checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/DevopsWorking/addressbook.git']])
+            }
+
         }
-      }
+        stage('test stage'){
+            steps{
+                sh 'ls'
+            }
+
+        }
+
     }
-    stage('contents'){
-      steps{
-        sh 'ls'
-      }
-    }
-  
-  }
+
 }
+
+        
