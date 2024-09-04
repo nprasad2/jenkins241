@@ -1,7 +1,7 @@
 pipeline{
     agent any
     stages{
-        stage( ' upstream1'){
+        stage( ' upstream1 '){
             steps{
                 echo "now we are in upstream job"
             }
@@ -16,6 +16,5 @@ pipeline{
         }
 
     }
-
 
 }
