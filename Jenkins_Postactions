@@ -1,0 +1,43 @@
+pipeline{
+    agent any 
+    stages{
+        stage('checkout stage'){
+            steps{
+                checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/DevopsWorking/addressbook.git']])    
+            }
+        }
+        stage('compile stage'){
+            steps{
+                sh 'mvn compile'    
+            }
+        }
+
+        stage('package the code '){
+            steps{
+
+                sh 'mvn test'
+            }
+        }
+
+        stage('package the code '){
+            steps{
+
+                sh 'mvn package'
+            }
+        }
+
+    }
+    post {
+        always {
+            echo " pipeline executed "
+        }
+        failure {
+            echo "pipeline exeution failed "
+        }
+        passed {
+            echo "pipeline exeution pass "
+        }
+    }
+
+
+}
