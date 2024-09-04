@@ -1,0 +1,17 @@
+pipeline{
+    agent any
+    stages{
+        stage( ' upstream')
+            steps{
+                echo "now we are in upstream job"
+            }
+        stage( ' upstream'){
+            script{
+                buildjob: 'downstream_job'
+            }
+        }
+
+    }
+
+
+}

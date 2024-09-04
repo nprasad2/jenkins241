@@ -1,0 +1,17 @@
+pipeline{
+    agent any
+    stages{
+        stage( ' downstream1')
+            steps{
+                echo "now we are in downstream1 job"
+            }
+        stage( ' downstream2'){
+            steps{
+                echo "now we are in downstream2 job"
+            }
+        }
+
+    }
+
+
+}
