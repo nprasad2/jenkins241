@@ -10,8 +10,9 @@ pipeline{
             steps{
 
                 script{
-                    build job: 'downstream_job',
+                    build job: 'downstream_job'
                 }
+
             }
         }
 
