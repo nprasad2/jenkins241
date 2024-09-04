@@ -1,12 +1,12 @@
 pipeline{
     agent any
     stages{
-        stage( ' upstream'){
+        stage( ' upstream1'){
             steps{
                 echo "now we are in upstream job"
             }
         }
-        stage( ' upstream'){
+        stage( ' upstream2'){
             script{
                 buildjob: 'downstream_job'
             }
