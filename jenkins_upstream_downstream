@@ -7,8 +7,11 @@ pipeline{
             }
         }
         stage( ' upstream2'){
-            script{
-                buildjob: 'downstream_job'
+            steps{
+
+                script{
+                    buildjob: 'downstream_job'
+                }
             }
         }
 
