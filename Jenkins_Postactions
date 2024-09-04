@@ -34,7 +34,7 @@ pipeline{
         failure {
             echo "pipeline exeution failed "
         }
-        pass {
+        success {
             echo "pipeline exeution pass "
         }
     }
