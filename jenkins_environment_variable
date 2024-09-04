@@ -1,0 +1,24 @@
+pipeline{
+    agent any
+    stages{
+        stage(' build '){
+            steps {
+                echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
+            }
+        }
+
+    }
+    post {
+        always {
+            echo " pipeline executed "
+        }
+        failure {
+            echo "pipeline exeution failed "
+        }
+        success {
+            echo "pipeline exeution pass "
+        }
+    }
+
+
+}
