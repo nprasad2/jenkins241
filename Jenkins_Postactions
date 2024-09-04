@@ -12,7 +12,7 @@ pipeline{
             }
         }
 
-        stage('package the code '){
+        stage('test the code '){
             steps{
 
                 sh 'mvn test'
@@ -34,7 +34,7 @@ pipeline{
         failure {
             echo "pipeline exeution failed "
         }
-        passed {
+        pass {
             echo "pipeline exeution pass "
         }
     }
