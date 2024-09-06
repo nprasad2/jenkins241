@@ -37,7 +37,7 @@ pipeline{
                 echo 'Login Completed' 
             }     
         }           
-}
+
         stage('pushing the image '){
             steps{
                 sh ' docker push hkaranam241/addressbook:v1'
