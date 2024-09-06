@@ -30,7 +30,7 @@ pipeline{
 }
         stage('pushing the image '){
             steps{
-                sh 'sudo docker push hkaranam241/addressbook:v1
+                sh 'sudo docker push hkaranam241/addressbook:v1'
                 echo 'Push Image Completed' 
             }
         }
