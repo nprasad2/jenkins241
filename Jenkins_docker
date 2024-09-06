@@ -11,6 +11,11 @@ pipeline{
                 echo "checkout completed to clone the dockerfile"
             }
         }
+        stage(' docker version'){
+            steps{
+                sh ' dockeer --version'
+            }
+        }
         stage('creating the image '){
             steps{
                sh 'docker build -t hkaranam241/addressbook:v1 .'
