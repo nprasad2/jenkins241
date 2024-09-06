@@ -18,7 +18,7 @@ pipeline{
         }
         stage('creating the image '){
             steps{
-               sh 'docker build -t hkaranam241/addressbook:v1 .'
+               sh 'sudo docker build -t hkaranam241/addressbook:v1 .'
                echo "image creation completed"
             }
         }
