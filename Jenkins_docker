@@ -1,5 +1,8 @@
 pipeline{
     agent any
+    tools{
+        maven 'Maven'
+    }
     environment { 
                 AN_ACCESS_KEY = credentials('docker-cred')
     }
@@ -9,6 +12,11 @@ pipeline{
             steps{
                 checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/DevopsWorking/addressbook.git']])
                 echo "checkout completed to clone the dockerfile"
+            }
+        }
+        stage(' mvn package'){
+            steps{
+                sh ' mvn package'
             }
         }
         stage(' docker version'){
