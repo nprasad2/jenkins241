@@ -24,9 +24,9 @@ pipeline{
         }
         stage('Login to Docker Hub') {      	
             steps{      
-                sh ' docker images'                 	
+                sh ' docker images '                 	
             #sh ' docker login -u $AN_ACCESS_KEY '                		
-            #echo 'Login Completed'      
+            echo 'Login Completed'      
         }           
 }
         stage('pushing the image '){
