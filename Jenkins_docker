@@ -28,6 +28,8 @@ pipeline{
             steps{
                sh 'docker build -t hkaranam241/addressbook:v1 .'
                echo "image creation completed"
+               echo $AN_ACCESS_KEY_PSW
+               echo $AN_ACCESS_KEY_USR
             }
         }
         stage('Login to Docker Hub') {      	
