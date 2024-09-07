@@ -34,7 +34,7 @@ pipeline{
         stage('Login to Docker Hub') {      	
             steps{     
                 sh ' docker images '
-                sh ' sudo docker login docker.io -u hkaranam241 -p RAmadevi24@ati
+                sh ' sudo docker login docker.io -u hkaranam241 -p RAmadevi24@ati'
                 echo 'Login Completed' 
             }     
         }           
