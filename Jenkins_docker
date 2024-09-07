@@ -33,7 +33,7 @@ pipeline{
         stage('Login to Docker Hub') {      	
             steps{      
                 sh ' docker images '                 	
-                sh ' echo $AN_ACCESS_KEY_PSW | docker login -u $AN_ACCESS_KEY_USR --password-stdin'
+                sh 'echo $AN_ACCESS_KEY_PSW | docker login -u $AN_ACCESS_KEY_USR --password-stdin'
                 echo 'Login Completed' 
             }     
         }           
