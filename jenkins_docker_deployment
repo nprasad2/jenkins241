@@ -44,6 +44,12 @@ pipeline{
                 echo 'Push Image Completed' 
             }
         }
+        stage('deployment the image '){
+            steps{
+                sh ' docker run -p 80:80 hkaranam241/addressbook:v1'
+                echo 'Push Image Completed' 
+            }
+        }
         
     }
 
