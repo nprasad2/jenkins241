@@ -3,10 +3,6 @@ pipeline{
     tools{
         maven 'Maven' 
     }
-    environment { 
-        AN_ACCESS_KEY = credentials('docker-cred')
-    }
-             
     stages{
         stage('checkout to dockerfile'){
             steps{
