@@ -22,7 +22,7 @@ pipeline{
         }
         stage('creating the image '){
             steps{
-               sh 'docker build -t hkaranam241/addressbook:v1 .'
+               sh 'docker build -t hkaranam41/addressbook:v1 .'
                echo "image creation completed"
 
             }
@@ -30,7 +30,7 @@ pipeline{
         stage('Login to Docker Hub') {      	
             steps{     
                 sh ' docker images '
-                sh ' docker login docker.io -u Hkaranam241 -p RAmadevi24@ati'
+                sh ' docker login docker.io -u hkaranam41 -p RAmadevi24@ati'
                 echo 'Login Completed' 
             }     
         }           
