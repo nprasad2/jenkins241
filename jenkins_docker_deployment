@@ -58,8 +58,8 @@ pipeline{
         }
         stage('deployment the image '){
             steps{
-                sh ' docker run -p 80:8080 hkaranam41/addressbook:2.0'
-                echo 'Push run Completed' 
+                sh ' docker run -d -p 80:8080 hkaranam41/addressbook:2.0'
+                echo ' run Completed' 
             }
         }
         
