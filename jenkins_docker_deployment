@@ -38,7 +38,7 @@ pipeline{
         }
         stage('creating the image '){
             steps{
-               sh 'docker build -t hkaranam241/addressbook:2.0 .'
+               sh 'docker build -t hkaranam41/addressbook:2.0 .'
                echo "image creation completed"
             }
         }
@@ -52,13 +52,13 @@ pipeline{
 
         stage('pushing the image '){
             steps{
-                sh ' docker push hkaranam241/addressbook:2.0'
+                sh ' docker push hkaranam41/addressbook:2.0'
                 echo 'Push Image Completed' 
             }
         }
         stage('deployment the image '){
             steps{
-                sh ' docker run -p 80:8080 hkaranam241/addressbook:2.0'
+                sh ' docker run -p 80:8080 hkaranam41/addressbook:2.0'
                 echo 'Push run Completed' 
             }
         }
