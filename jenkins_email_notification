@@ -29,7 +29,8 @@ pipeline{
         }
         stage('docker hub login'){
             steps{
-                sh 'echo $docker_credentials_PSW | docker login -u docker_credentials_USR --password-stdin'
+                sh 'echo $docker_credentials_PSW | docker login -u $docker_credentials_USR --password-stdin'
+                //sh ' echo $AN_ACCESS_KEY_PSW | docker login -u $AN_ACCESS_KEY_USR --password-stdin'
             }
         }
 
