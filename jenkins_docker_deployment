@@ -6,6 +6,14 @@ pipeline{
     environment { 
                 AN_ACCESS_KEY = credentials('docker-cred')
     }
+    options {
+        buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '30', numToKeepStr: '2')
+    }
+    environment {
+    //Use Pipeline Utility Steps plugin to read information from pom.xml into env variables
+        //IMAGE = readMavenPom().getArtifactId()
+        VERSION = readMavenPom().getVersion()
+    }
              
     stages{
         stage('checkout to dockerfile'){
@@ -40,14 +48,14 @@ pipeline{
 
         stage('pushing the image '){
             steps{
-                sh ' docker push hkaranam241/addressbook:v1'
+                sh ' docker push hkaranam241/addressbook:$VERSION'
                 echo 'Push Image Completed' 
             }
         }
         stage('deployment the image '){
             steps{
-                sh ' docker run -p 80:80 hkaranam241/addressbook:v1'
-                echo 'Push Image Completed' 
+                sh ' docker run -p 80:80 hkaranam241/addressbook:$VERSION'
+                echo 'Push run Completed' 
             }
         }
         
