@@ -9,17 +9,21 @@ pipeline{
     options {
         buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '30', numToKeepStr: '2')
     }
-    environment {
-    //Use Pipeline Utility Steps plugin to read information from pom.xml into env variables
-        //IMAGE = readMavenPom().getArtifactId()
-        VERSION = readMavenPom().getVersion()
-    }
+    // environment {
+    // //Use Pipeline Utility Steps plugin to read information from pom.xml into env variables
+    //     //IMAGE = readMavenPom().getArtifactId()
+    //     VERSION = readMavenPom().getVersion()
+    // }
              
     stages{
         stage('checkout to dockerfile'){
             steps{
                 checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/DevopsWorking/addressbook.git']])
                 echo "checkout completed to clone the dockerfile"
+                def version() {
+                    def matcher = readFile('pom.xml') =~ '<version>(.+?)</version>'
+                    matcher ? matcher[0][1] : null
+                }
             }
         }
         stage(' mvn package'){
@@ -48,13 +52,13 @@ pipeline{
 
         stage('pushing the image '){
             steps{
-                sh ' docker push hkaranam241/addressbook:$VERSION'
+                sh ' docker push hkaranam241/addressbook:$version'
                 echo 'Push Image Completed' 
             }
         }
         stage('deployment the image '){
             steps{
-                sh ' docker run -p 80:80 hkaranam241/addressbook:$VERSION'
+                sh ' docker run -p 80:80 hkaranam241/addressbook:$version'
                 echo 'Push run Completed' 
             }
         }
