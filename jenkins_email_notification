@@ -1,0 +1,51 @@
+pipeline{
+    agent any
+    options{
+        buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '30', numToKeepStr: '2')
+    }
+    tools {
+        maven 'Maven'
+    }
+    environment {
+        docker_credentials = credentials('docker-cred')
+    }
+    stages{
+        stage('build checkout stage'){
+            steps{
+                checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/DevopsWorking/addressbook.git']])
+            }
+        }
+        stage('mvn build package'){
+            steps{
+                sh 'mvn package'
+                echo "build package completed "
+            }
+        }
+
+        stage('docker image creation'){
+            steps{
+                sh 'docker build -t hkaranam41/addressbook:2.0 .'
+            }
+        }
+        stage('docker hub login'){
+            steps{
+                sh 'echo $docker_credentials_PSW | docker login -u docker_credentials_USR --password-stdin'
+            }
+        }
+
+    }
+    post {
+        always {
+            echo 'pipeline execution is completed'
+        }
+        success {
+            echo 'job got passed'
+            mail bcc: '', body: "<b>Example</b><br>Project: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} <br> URL de build: ${env.BUILD_URL}", cc: '', charset: 'UTF-8', from: '', mimeType: 'text/html', replyTo: '', subject: "ERROR CI: Project name -> ${env.JOB_NAME}", to: "hkaranam241@gmail.com";  
+        }
+        failure {
+             echo 'job got failed'
+        }
+    }
+
+
+}
