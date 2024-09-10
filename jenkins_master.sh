@@ -49,6 +49,16 @@ validate $? "enabling the jenkins service "
 sudo systemctl start jenkins
 validate $? "starting jenkins service"
 
+sudo dnf install ansible -y
+validate $? "installing ansible"
+
+sudo wget https://releases.hashicorp.com/terraform/1.9.2/terraform_1.9.2_linux_amd64.zip
+validate $? "downloading the terraform"
+
+sudo unzip terraform_1.9.2_linux_amd64.zip -d /usr/local/bin
+validate $? "unzip the terraform"
+
+
 sudo systemctl status jenkins
 validate $? "checking the jenkins service status"
 
