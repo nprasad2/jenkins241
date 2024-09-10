@@ -12,12 +12,12 @@ pipeline{
         }
         stage('terraform init'){
             steps{
-                sh 'terrafrom init'
+                sh 'terraform init'
             }
         }
         stage('terraform plan'){
             steps{
-                sh 'terrafrom plan'
+                sh 'terraform plan'
             }
         }
 
