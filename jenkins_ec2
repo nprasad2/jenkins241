@@ -1,5 +1,8 @@
 pipeline{
     agent any
+    environment{
+        cred=credentials('aws-cred')
+    }
     stages{
         stage('checkout'){
             steps{
