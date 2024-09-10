@@ -3,9 +3,11 @@ pipeline{
     stages{
         stage('checkout'){
             steps{
-                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Harikrishna241/Terraform.git']])
-                sh 'cd Ec2'
-                sh 'ls -al'
+                script{
+                    checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Harikrishna241/Terraform.git']])
+                    sh 'cd Ec2 | ls -al '
+                    sh ' -al'
+                }
             }
         
         }
