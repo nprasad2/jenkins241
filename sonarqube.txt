@@ -7,3 +7,9 @@ once sonar scanner server is installed ,then we need to enble the plugin in our 
 https://github.com/DevopsWorking/addressbook.git 
 
 https://www.jenkins.io/doc/book/pipeline/jenkinsfile/#using-environment-variables 
+
+nexus : 
+First we need to login with user :
+ssh -i xxx.pem ubuntu@ ip address
+then you will enter into a nexus server there you need to 
+ cat /opt/sonatype-work/nexus3/admin.password for password  

@@ -1,0 +1,34 @@
+# Required metadata
+sonar.projectKey=<project-key>
+sonar.projectName=<project-name>
+sonar.projectVersion=<project-version>
+
+# Comma-separated paths to directories with sources (required)
+sonar.sources=src
+sonar.exclusions=src/vendor/**/*
+
+# Language
+sonar.language=php
+
+# Encoding of the source files
+sonar.sourceEncoding=UTF-8
+
+sonar.php.coverage.reportPath=src/coverage-clover.xml #change path to location of your test report
+sonar.php.tests.reportPath=src/unitreport.xml  #change path to location of your test report
+
+stage('Code Analysis') {
+            environment {
+                scannerHome = tool 'Sonar' #referring to soanr tool in jenkins tools CLI  
+            }
+            steps {
+                script {
+                    withSonarQubeEnv('Sonar') { # refering to sonar server 
+                        sh "${scannerHome}/bin/sonar-scanner \
+                            -Dsonar.projectKey=<project-key> \
+                            -Dsonar.projectName=<project-name> \
+                            -Dsonar.projectVersion=<project-version> \
+                            -Dsonar.sources=<project-path>"
+                    }
+                }
+            }
+}
