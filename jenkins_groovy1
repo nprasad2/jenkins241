@@ -2,4 +2,8 @@ node{
     stage('Build stage'){
         echo "Hari krishna"
     }
+
+    stage('test stage'){
+        echo "Hari krishna"
+    }
 }
