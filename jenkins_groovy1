@@ -6,4 +6,8 @@ node{
     stage('test stage'){
         echo "Hari krishna"
     }
+
+    input {
+        message 'what is your name'
+    }
 }
