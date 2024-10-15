@@ -1,5 +1,5 @@
 node{
     stage('Build stage'){
-        echo userInput
+        echo "Hari krishna"
     }
 }
