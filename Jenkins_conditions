@@ -1,0 +1,35 @@
+ agent any         
+  stages {
+      stage ("Pre-Check Parameters") {      
+          steps {
+
+              echo "Pre-Check called in pipeline"
+          }
+        }
+              stage ("build-prod") {           
+          when {
+              expression { params.region == 'prod_only' || params.region == 'prod_and_dr' }
+          }
+          steps { 
+              build 'job4'
+          }
+
+        }
+          stage ("build-dr") {           
+                  input{
+                  message "Proceed or Abort"
+                  submitter "user1,admin"
+                  parameters {
+                  string(name:'username', defaultValue: 'user1', description: 'Username of the user pressing Ok')
+                  }
+              } 
+
+          when {
+              expression { params.region == 'dr_only' || params.region == 'prod_and_dr'}
+          }
+          steps { 
+              build 'job5'
+          }    
+      }
+  }
+}

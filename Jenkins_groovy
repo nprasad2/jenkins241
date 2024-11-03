@@ -1,0 +1,13 @@
+properties([
+  parameters([
+    string( name: 'BuildConfiguration', 
+            defaultValue: 'Release', 
+            description: 'Configuration to build (Debug/Release/...)')
+  ])
+]) 
+node{
+  stage('checkout') {
+    echo 'Hello World'
+    
+  }
+}

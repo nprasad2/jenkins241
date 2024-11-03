@@ -1,0 +1,25 @@
+pipeline{
+    agent any
+    stages {    
+        stage('Example') {
+            steps {
+                script {
+                    
+                    sh(echo "Output is entering the input ")
+                }
+            }
+
+            input {
+                message "Should we continue?"
+                ok "Yes, we should."
+                submitter "alice,bob"
+                parameters {
+                     choice(name: 'From', choices: ['red', 'yellow', 'green'], description: 'from environment') 
+                     choice(name: 'To', choices: ['red', 'yellow', 'green'], description: 'to environment') 
+                }
+                
+            }
+           
+        }
+    }
+}

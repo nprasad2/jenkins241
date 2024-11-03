@@ -1,0 +1,57 @@
+pipeline{
+    agent any
+    tools{
+        maven 'Maven'
+    }
+             
+    stages{
+        stage('checkout to dockerfile'){
+            steps{
+                checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/DevopsWorking/addressbook.git']])
+                // echo "checkout completed to clone the dockerfile"
+                // def version() {
+                //     def matcher = readFile('pom.xml') =~ '<version>(.+?)</version>'
+                //     matcher ? matcher[0][1] : null
+                // }
+            }
+        }
+        stage(' mvn package'){
+            steps{
+                sh ' mvn package'
+            }
+        }
+        stage(' docker version'){
+            steps{
+                sh ' docker --version'
+            }
+        }
+        stage('creating the image '){
+            steps{
+               sh 'docker build -t hkaranam41/addressbook:2.0 .'
+               echo "image creation completed"
+            }
+        }
+        stage('Login to Docker Hub') {      	
+            steps{      
+                sh ' docker images '                 	
+                sh ' echo $AN_ACCESS_KEY_PSW | docker login -u $AN_ACCESS_KEY_USR --password-stdin'
+                echo 'Login Completed' 
+            }     
+        }           
+
+        stage('pushing the image '){
+            steps{
+                sh ' docker push hkaranam41/addressbook:2.0'
+                echo 'Push Image Completed' 
+            }
+        }
+        stage('deployment the image '){
+            steps{
+                sh ' docker run -d -p 80:8080 hkaranam41/addressbook:2.0'
+                echo ' run Completed' 
+            }
+        }
+        
+    }
+
+}
