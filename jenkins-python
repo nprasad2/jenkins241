@@ -1,16 +1,22 @@
 pipeline{
     agent any
+    // environment {
+    //     PATH = "C:\/pyhon\/python.exe;$PATH"
+    // }
     stages{
         stage('checkout-stage1'){
             steps{
                 checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Harikrishna241/python']])
+                
 
             }
         }
         stage('running-pythonscript'){
             steps{
-                echo 'we are in stage2'
-
+                script{
+                    cd "C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\python"               
+                   sh "py 05-python.py"
+                }
             }
         }
 
