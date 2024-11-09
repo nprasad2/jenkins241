@@ -15,6 +15,7 @@ pipeline{
             steps{
                 script{      
                    sh "mkdir test"
+                   sh "chmod 777"
                    sh "cp 06-python.py /test"
                    sh ls -l
                    
