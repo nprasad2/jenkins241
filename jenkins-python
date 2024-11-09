@@ -14,8 +14,8 @@ pipeline{
         stage('running-pythonscript'){
             steps{
                 script{      
-                   sh mkdir test
-                   sh cp 06-python.py /test
+                   sh "mkdir test"
+                   sh "cp 06-python.py /test"
                    sh ls -l
                    
                    //sh "chmod +x 05-python.py"
