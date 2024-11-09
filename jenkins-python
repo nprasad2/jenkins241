@@ -17,7 +17,7 @@ pipeline{
                    sh "rm -rf test"
                    sh "mkdir test"
                    sh "chmod 777 test"
-                   sh "cp 06-python.py /test"
+                   sh "cp -r 06-python.py /test"
                    sh ls -l
                    
                    //sh "chmod +x 05-python.py"
