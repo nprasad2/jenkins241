@@ -15,7 +15,8 @@ pipeline{
             steps{
                 script{      
     
-                   sh "sudo ./05-python.py"
+                   sh "chmod +x 05-python.py"
+                   sh "./05-python.py"
                 }
             }
         }
