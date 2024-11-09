@@ -14,9 +14,12 @@ pipeline{
         stage('running-pythonscript'){
             steps{
                 script{      
-    
-                   sh "chmod +x 05-python.py"
-                   sh "python3 05-python.py"
+                   sh mkdir test
+                   sh cp 06-python.py /test
+                   sh ls -l
+                   
+                   //sh "chmod +x 05-python.py"
+                   //sh "python3 05-python.py"
                 }
             }
         }
