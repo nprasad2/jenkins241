@@ -6,7 +6,7 @@ pipeline{
     stages{
         stage('checkout-stage1'){
             steps{
-                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Harikrishna241/python']])
+                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/nprasad2/python231']])
                 
 
             }
