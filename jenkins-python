@@ -13,9 +13,8 @@ pipeline{
         }
         stage('running-pythonscript'){
             steps{
-                script{
-                    cd "C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\python"               
-                   sh "py 05-python.py"
+                script{             
+                   sh "./05-python.py"
                 }
             }
         }
