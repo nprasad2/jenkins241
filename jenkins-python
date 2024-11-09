@@ -13,8 +13,9 @@ pipeline{
         }
         stage('running-pythonscript'){
             steps{
-                script{             
-                   sh "./05-python.py"
+                script{      
+    
+                   sh "sudo ./05-python.py"
                 }
             }
         }
